@@ -1,6 +1,22 @@
-import React, {useState} from 'react';
-
-import Tabs from './Tabs';
+import React, { useState } from 'react';
+import {
+    Grid,
+    Container,
+    Box,
+    List,
+    ListItemButton,
+    ListItemText,
+    ListItemIcon,
+    Collapse,
+    Tabs,
+    Tab
+} from '@mui/material';
+import {
+    SendAndArchiveRounded,
+    ExpandLess,
+    ExpandMore,
+    StarBorder
+} from '@mui/icons-material';
 
 import './Home.css';
 import Gallery from './Gallery';
@@ -8,69 +24,89 @@ import Slider from './Slider';
 
 
 const Home = () => {
-    const [isGalleryVisible, setIsGalleryVisible] = useState(true)
-    const [isSliderVisible, setIsSliderVisible] = useState(false)
+    const [isSliderVisible, setIsSliderVisible] = useState(true);
+    const [isGalleryVisible, setIsGalleryVisible] = useState(false);
+    const [openSFW, setOpenSFW] = useState(false);
+    const [openNSFW, setOpenNSFW] = useState(false);
+    const [tabValue, setTabValue] = useState('slider');
 
-    const showGallery = (galleryVisibilityStatus) => {
-        setIsGalleryVisible(galleryVisibilityStatus)
-    } 
+    const handleTabChange = (event, newValue) => {
+        if (newValue === 'slider') {
+            setIsGalleryVisible(false);
+            setIsSliderVisible(true);
+        } else {
+            setIsGalleryVisible(true);
+            setIsSliderVisible(false);
+        }
+        setTabValue(newValue);
+    };
 
-    const showSlider = (sliderVisibilityStatus) => {
-        setIsSliderVisible(sliderVisibilityStatus)
-    }
+    const handleClickSFW = () => {
+        setOpenSFW(!openSFW);
+    };
+    const handleClickNSFW = () => {
+        setOpenNSFW(!openNSFW);
+    };
+
 
     return (
         <React.Fragment>
-            <div className='container-fluid'>
-                <div className="row">
-                    <div className="col-2" style={{ paddingLeft: 0, paddingRight: 0, height: '100vh', position: 'sticky', overflowY: 'scroll', borderRight: 'groove', borderRightColor: 'black', borderRightWidth: '5px' }}>
-                        <div className="accordion accordion-flush" id="sfw">
-                            <div className="accordion-item">
-                                <h2 className="accordion-header" id="flush-headingOne">
-                                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sfw-collapse" aria-expanded="false" aria-controls="sfw-collapse">
-                                        SFW
-                                    </button>
-                                </h2>
-                                <div id="sfw-collapse" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#sfw">
-                                    <div className="accordion-body" style={{ padding: 0 }}>
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item active">An item</li>
-                                            <li className="list-group-item">A second item</li>
-                                            <li className="list-group-item">A third item</li>
-                                            <li className="list-group-item">A fourth item</li>
-                                            <li className="list-group-item">And a fifth one</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="accordion-item">
-                                <h2 className="accordion-header" id="flush-nsfw">
-                                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nsfw-collapse" aria-expanded="false" aria-controls="nsfw-collapse">
-                                        NSFW
-                                    </button>
-                                </h2>
-                                <div id="nsfw-collapse" className="accordion-collapse collapse" aria-labelledby="flush-nsfw" data-bs-parent="#nsfw">
-                                    <div className="accordion-body" style={{ padding: 0 }}>
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item active">An item</li>
-                                            <li className="list-group-item">A second item</li>
-                                            <li className="list-group-item">A third item</li>
-                                            <li className="list-group-item">A fourth item</li>
-                                            <li className="list-group-item">And a fifth one</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-10" style={{ paddingLeft: 0, paddingRight: 0 }}>
-                        <Tabs showGallery={showGallery} showSlider={showSlider} galleryActive={isGalleryVisible} sliderActive={isSliderVisible}/>
-                        {isGalleryVisible && <Gallery />}
-                        {isSliderVisible && <Slider/>}
-                    </div>
-
-                </div>
-            </div>
+            <Container disableGutters={true} maxWidth="xl">
+                <Grid container>
+                    <Grid item xs={2} sm={3} md={3} lg={2} xl={2}>
+                        <Box>
+                            <List disablePadding >
+                                <ListItemButton onClick={handleClickSFW}>
+                                    <ListItemIcon>
+                                        <SendAndArchiveRounded />
+                                    </ListItemIcon>
+                                    <ListItemText primary="SFW" />
+                                    {openSFW ? <ExpandLess /> : <ExpandMore />}
+                                </ListItemButton>
+                                <Collapse in={openSFW} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding>
+                                        <ListItemButton sx={{ pl: 4 }}>
+                                            <ListItemIcon>
+                                                <StarBorder />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Starred" />
+                                        </ListItemButton>
+                                    </List>
+                                </Collapse>
+                            </List>
+                            <List disablePadding >
+                                <ListItemButton onClick={handleClickNSFW}>
+                                    <ListItemIcon>
+                                        <SendAndArchiveRounded />
+                                    </ListItemIcon>
+                                    <ListItemText primary="NSFW" />
+                                    {openNSFW ? <ExpandLess /> : <ExpandMore />}
+                                </ListItemButton>
+                                <Collapse in={openNSFW} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding>
+                                        <ListItemButton sx={{ pl: 4 }}>
+                                            <ListItemIcon>
+                                                <StarBorder />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Starred" />
+                                        </ListItemButton>
+                                    </List>
+                                </Collapse>
+                            </List>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={10} sm={9} md={9} lg={10} xl={10}>
+                        <Box sx={{ bgcolor: 'background.paper' }}>
+                            <Tabs value={tabValue} onChange={handleTabChange} indicatorColor='secondary' variant='fullWidth'>
+                                <Tab value="slider" label="Slider" />
+                                <Tab value="gallery" label="Gallery" />
+                            </Tabs>
+                            {isGalleryVisible && <Gallery />}
+                            {isSliderVisible && <Slider />}
+                        </Box>
+                    </Grid>
+                </Grid>
+            </Container>
         </React.Fragment>
     );
 };
