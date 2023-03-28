@@ -7,7 +7,7 @@ const App = () => {
     <React.Fragment>
       <Home />
     </React.Fragment>
-  );
+  )
 };
 
 export default App;
