@@ -10,7 +10,8 @@ import {
     ListItemButton,
     ListItemText,
     Tab,
-    Tabs
+    Tabs,
+    Snackbar
 } from '@mui/material';
 import {
     ExpandLess,
@@ -28,14 +29,14 @@ const nsfwCategoryAvtarSource = '/src/assets/nsfw1.webp';
 
 const Home = () => {
 
-    let initialCategory = {type:'sfw',category:'waifu'}
+    let initialCategory = { type: 'sfw', category: 'waifu' };
 
     const [isSliderVisible, setIsSliderVisible] = useState(true);
     const [isGalleryVisible, setIsGalleryVisible] = useState(false);
     const [openSFW, setOpenSFW] = useState(false);
     const [openNSFW, setOpenNSFW] = useState(false);
     const [tabValue, setTabValue] = useState('slider');
-    const [imageCategory, setImageCategory] = useState(initialCategory)
+    const [imageCategory, setImageCategory] = useState(initialCategory);
 
     /*
     -----------------------------
@@ -65,11 +66,11 @@ const Home = () => {
         setOpenNSFW(!openNSFW);
     };
     const handelSfwCategory = (category) => {
-        setImageCategory({type:'sfw',category:category})
-    }
+        setImageCategory({ type: 'sfw', category: category });
+    };
     const handelNsfwCategory = (category) => {
-        setImageCategory({type:'nsfw',category:category})
-    }
+        setImageCategory({ type: 'nsfw', category: category });
+    };
 
     return (
         <React.Fragment>
@@ -88,7 +89,7 @@ const Home = () => {
                                 <Collapse in={openSFW} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding>
                                         {sfwCategory.map((category) => {
-                                            return (<ListItemButton sx={{ pl: 4 }} key={category} onClick={()=>handelSfwCategory(category)}>
+                                            return (<ListItemButton sx={{ pl: 4 }} key={category} onClick={() => handelSfwCategory(category)}>
                                                 <ListItemAvatar>
                                                     <Avatar src={sfwCategoryAvtarSource} />
                                                 </ListItemAvatar>
@@ -109,7 +110,7 @@ const Home = () => {
                                 <Collapse in={openNSFW} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding>
                                         {nsfwCategory.map((category) => {
-                                            return (<ListItemButton sx={{ pl: 4 }} key={category} onClick={()=>handelNsfwCategory(category)}>
+                                            return (<ListItemButton sx={{ pl: 4 }} key={category} onClick={() => handelNsfwCategory(category)}>
                                                 <ListItemAvatar>
                                                     <Avatar src={nsfwCategoryAvtarSource} />
                                                 </ListItemAvatar>
