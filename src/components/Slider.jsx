@@ -30,7 +30,7 @@ const Slider = ({ typeAndCategory }) => {
   const getApiData = async () => {
     setShowLoadingIcon(true);
     let urlObj = await electron.urlApi.getUrl(typeAndCategory);
-    console.log(urlObj);
+    // console.log(urlObj);
     setDisablePreviousButton(urlObj.disabledButtonStatus);
     setImageUrl(urlObj.url);
     setShowLoadingIcon(false);
@@ -44,7 +44,7 @@ const Slider = ({ typeAndCategory }) => {
   const handelPreviousImage = async () => {
     setShowLoadingIcon(true);
     let urlObj = await electron.urlApi.previousUrl();
-    console.log(urlObj);
+    // console.log(urlObj);
     setDisablePreviousButton(urlObj.disabledButtonStatus);
     setImageUrl(urlObj.url);
     setShowLoadingIcon(false);
@@ -53,7 +53,7 @@ const Slider = ({ typeAndCategory }) => {
   const handelNextImage = async () => {
     setShowLoadingIcon(true);
     let urlObj = await electron.urlApi.nextUrl(typeAndCategory);
-    console.log(urlObj);
+    // console.log(urlObj);
     setDisablePreviousButton(urlObj.disabledButtonStatus);
     setImageUrl(urlObj.url);
     setShowLoadingIcon(false);
@@ -64,14 +64,15 @@ const Slider = ({ typeAndCategory }) => {
     setOpenSnackBar(true)
   };
 
-  const handelImageLoading = () => {
-    console.log('loaded');
-    // if(imageLoading){
-    //   setShowLoadingIcon(true)
-    // }else{
-    //   setShowLoadingIcon(false)
-    // }
-  };
+  // const handelImageLoading = () => {
+  //   onLoad={handelImageLoading}
+  //   console.log('loaded');
+  //   if(imageLoading){
+  //     setShowLoadingIcon(true)
+  //   }else{
+  //     setShowLoadingIcon(false)
+  //   }
+  // };
 
   const handelSnakBar = () => {
     setOpenSnackBar(false)
@@ -90,7 +91,7 @@ const Slider = ({ typeAndCategory }) => {
           </Grid>
           <Grid item xs={8} sm={8} md={8} lg={6} xl={6} style={{ width: 'inherit', height: 'inherit' }}>
             <Box sx={{ width: 'inherit', height: 'inherit', mt: 0.5 }} >
-              {showLoadingIcon ? <LoadingIcon /> : <img src={imageUrl} style={{ width: 'inherit', height: 'inherit' }} onLoad={handelImageLoading} />}
+              {showLoadingIcon ? <LoadingIcon /> : <img src={imageUrl} style={{ width: 'inherit', height: 'inherit' }} />}
             </Box>
           </Grid>
           <Grid item xs={2} sm={2} md={2} lg={3} xl={3} style={{ width: 'inherit', height: 'inherit' }}>
