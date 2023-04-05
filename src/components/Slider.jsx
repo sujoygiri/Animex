@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Container,
-  Box,
-  Stack,
-  IconButton,
-  Snackbar
-} from '@mui/material';
-import {
-  ArrowCircleRightRounded,
-  ArrowCircleLeftRounded,
-  FavoriteBorderRounded,
-  ShareRounded,
-  DownloadRounded
-} from '@mui/icons-material';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import IconButton from '@mui/material/IconButton'
+import Snackbar from '@mui/material/Snackbar'
+import ArrowCircleRightRounded from '@mui/icons-material/ArrowCircleRightRounded';
+import ArrowCircleLeftRounded from '@mui/icons-material/ArrowCircleLeftRounded';
+import DownloadRounded from '@mui/icons-material/DownloadRounded';
+import FavoriteBorderRounded from '@mui/icons-material/FavoriteBorderRounded';
+import ShareRounded from '@mui/icons-material/ShareRounded';
+
 
 import LoadingIcon from './utils/LoadingIcon';
 
@@ -23,7 +20,7 @@ const Slider = ({ typeAndCategory }) => {
   const [imageUrl, setImageUrl] = useState('');
   const [disablePreviousButton, setDisablePreviousButton] = useState(true);
   const [showLoadingIcon, setShowLoadingIcon] = useState(true);
-  const [imageLoading, setImageLoading] = useState(true);
+  // const [imageLoading, setImageLoading] = useState(true);
   const [openSnackBar, setOpenSnackBar] = useState(false)
 
 

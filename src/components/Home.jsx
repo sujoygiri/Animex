@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import {
-    Avatar,
-    Box,
-    Collapse,
-    Container,
-    Grid,
-    List,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemText,
-    Tab,
-    Tabs,
-    Snackbar
-} from '@mui/material';
-import {
-    ExpandLess,
-    ExpandMore
-} from '@mui/icons-material';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import List from '@mui/material/List'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import ExpandLess from '@mui/icons-material';
+import ExpandMore from '@mui/icons-material';
 
 import './Home.css';
 import Gallery from './Gallery';
