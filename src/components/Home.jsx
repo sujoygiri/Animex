@@ -10,8 +10,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
-import ExpandLess from '@mui/icons-material';
-import ExpandMore from '@mui/icons-material';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 import './Home.css';
 import Gallery from './Gallery';
