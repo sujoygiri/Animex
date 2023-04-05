@@ -25,7 +25,7 @@ const Slider = ({ typeAndCategory }) => {
   const [showLoadingIcon, setShowLoadingIcon] = useState(true);
   const [imageLoading, setImageLoading] = useState(true);
   const [openSnackBar, setOpenSnackBar] = useState(false)
-  
+
 
   const getApiData = async () => {
     setShowLoadingIcon(true);
@@ -90,7 +90,7 @@ const Slider = ({ typeAndCategory }) => {
           </Grid>
           <Grid item xs={8} sm={8} md={8} lg={6} xl={6} style={{ width: 'inherit', height: 'inherit' }}>
             <Box sx={{ width: 'inherit', height: 'inherit', mt: 0.5 }} >
-              {showLoadingIcon ? <LoadingIcon /> : <img src={imageUrl} loading='lazy' style={{ width: 'inherit', height: 'inherit' }} onLoad={handelImageLoading} />}
+              {showLoadingIcon ? <LoadingIcon /> : <img src={imageUrl} style={{ width: 'inherit', height: 'inherit' }} onLoad={handelImageLoading} />}
             </Box>
           </Grid>
           <Grid item xs={2} sm={2} md={2} lg={3} xl={3} style={{ width: 'inherit', height: 'inherit' }}>
